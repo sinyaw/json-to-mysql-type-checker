@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to MySQL Type Suggester</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font and overall body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            padding: 1rem; /* Add some padding for smaller screens */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">
+            JSON to MySQL Data Type Suggester
+        </h1>
+
+        <div class="mb-6">
+            <label for="jsonInput" class="block text-gray-700 text-sm font-semibold mb-2">
+                Paste your JSON data here:
+            </label>
+            <textarea
+                id="jsonInput"
+                rows="10"
+                class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 ease-in-out resize-y"
+                placeholder='Example: {"id": 1, "name": "Alice", "age": 30, "is_active": true, "created_at": "2023-01-15T10:30:00Z", "price": 99.99, "tags": ["a", "b"], "address": {"street": "Main St"}}'
+            ></textarea>
+        </div>
+
+        <button
+            id="suggestTypesBtn"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition duration-200 ease-in-out transform hover:scale-105"
+        >
+            Suggest MySQL Data Types
+        </button>
+
+        <div id="resultOutput" class="mt-8 p-4 bg-green-50 rounded-lg border border-green-200 text-gray-800 text-base font-medium hidden">
+            <h2 class="text-xl font-semibold mb-3 text-gray-700">Suggested MySQL Data Types:</h2>
+            <ul id="typeList" class="list-disc list-inside space-y-2">
+                <!-- Suggestions will be inserted here -->
+            </ul>
+            <p class="mt-4 text-sm text-gray-600">
+                <strong class="font-bold">Note:</strong> These are suggestions based on common usage. Always review and adjust data types based on your specific application requirements, expected data ranges, and database performance considerations. For nested objects/arrays, the `JSON` type is suggested (MySQL 5.7+).
+            </p>
+        </div>
+    </div>
+
+    <script src="basic-sql-type.js">
+    </script>
+
+</body>
+</html>
